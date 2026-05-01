@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Página Romántica 💗</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffd6e8, #ffeaf4);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 50px;
+      color: #ff4da6;
+      margin-top: 20px;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    textarea {
+      width: 80%;
+      height: 150px;
+      border-radius: 15px;
+      border: none;
+      padding: 15px;
+      font-size: 16px;
+      outline: none;
+      background-color: #fff0f6;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+    }
+
+    input[type="file"] {
+      margin-top: 20px;
+    }
+
+    .gallery {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #ff66b2;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Mi Espacio Bonito 💕</h1>
+
+  <div class="container">
+    
+    <h3>Escribe algo lindo 💌</h3>
+    <textarea placeholder="Escribe aquí..."></textarea>
+
+    <h3>Sube tus fotos favoritas 📸</h3>
+    <input type="file" id="fileInput" multiple accept="image/*">
+
+    <div class="gallery" id="gallery"></div>
+
+  </div>
+
+  <footer>
+    Hecho con amor 💗
+  </footer>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const gallery = document.getElementById('gallery');
+
+    fileInput.addEventListener('change', function() {
+      const files = fileInput.files;
+
+      for (let i = 0; i < files.length; i++) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          gallery.appendChild(img);
+        }
+
+        reader.readAsDataURL(files[i]);
+      }
+    });
+  </script>
+
+</body>
+  </html>
